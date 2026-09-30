@@ -1,0 +1,322 @@
+[
+  {
+    "id": 1,
+    "from_name": "Emily Carter",
+    "from_email": "emily.carter@example.com",
+    "subject": "Question about 412 Birchwood Lane",
+    "received_at": "2026-09-28T08:12:00-04:00",
+    "body": "Hi,\n\nI saw the listing for 412 Birchwood Lane and I'm interested. Could you tell me how much the monthly HOA fees are and whether the house has a two-car garage?\n\nThanks,\nEmily Carter\n(555) 014-2231",
+    "expected": {
+      "category": "inquiry",
+      "urgency": "low",
+      "name": "Emily Carter",
+      "phone": "5550142231",
+      "property": "412 Birchwood Lane",
+      "requested_date": null
+    }
+  },
+  {
+    "id": 2,
+    "from_name": "Marcus Reed",
+    "from_email": "mreed@example.com",
+    "subject": "Can I see 88 Oak Hollow Drive tomorrow?",
+    "received_at": "2026-09-28T08:40:00-04:00",
+    "body": "Hello, I'm relocating for work and I'm only in town until Wednesday. Would it be possible to tour 88 Oak Hollow Drive tomorrow around 5 pm? My cell is 555-014-7780.\n\nMarcus Reed",
+    "expected": {
+      "category": "viewing_request",
+      "urgency": "high",
+      "name": "Marcus Reed",
+      "phone": "5550147780",
+      "property": "88 Oak Hollow Drive",
+      "requested_date": "2026-09-29"
+    }
+  },
+  {
+    "id": 3,
+    "from_name": "Priya Nair",
+    "from_email": "priya.nair@example.com",
+    "subject": "URGENT - water leaking from ceiling, unit 3B",
+    "received_at": "2026-09-28T08:55:00-04:00",
+    "body": "Hi, I'm the tenant at 27 Maple Court, unit 3B. Water has been dripping from the bathroom ceiling since last night and it's now running down the wall next to an electrical outlet. Please send someone as soon as possible. You can reach me at 555 014 6120.\n\nPriya Nair",
+    "expected": {
+      "category": "complaint",
+      "urgency": "high",
+      "name": "Priya Nair",
+      "phone": "5550146120",
+      "property": "27 Maple Court",
+      "requested_date": null
+    }
+  },
+  {
+    "id": 4,
+    "from_name": "RankBoost Agency",
+    "from_email": "growth@rankboost-seo.example.net",
+    "subject": "Get your agency to #1 on Google in 30 days!!!",
+    "received_at": "2026-09-28T09:02:00-04:00",
+    "body": "Dear Business Owner,\n\nWe noticed your website is not ranking on the first page of Google. Our guaranteed SEO package will put you at #1 in 30 days or your money back. Reply YES to claim a free audit worth $999.\n\nBest regards,\nThe RankBoost Team",
+    "expected": {
+      "category": "spam",
+      "urgency": "low",
+      "name": null,
+      "phone": null,
+      "property": null,
+      "requested_date": null
+    }
+  },
+  {
+    "id": 5,
+    "from_name": "Daniel Kim",
+    "from_email": "dkim.home@example.com",
+    "subject": "Pets allowed in listing OH-1043?",
+    "received_at": "2026-09-28T09:20:00-04:00",
+    "body": "Hello Oakridge team,\n\nI'm interested in renting the 2-bedroom apartment at 150 Linden Street (listing OH-1043). I have a small dog (20 lbs). Is the building pet friendly, and is there a pet deposit?\n\nThank you,\nDaniel Kim",
+    "expected": {
+      "category": "inquiry",
+      "urgency": "low",
+      "name": "Daniel Kim",
+      "phone": null,
+      "property": "150 Linden Street",
+      "requested_date": null
+    }
+  },
+  {
+    "id": 6,
+    "from_name": "Sofia Martinez",
+    "from_email": "sofia.m@example.com",
+    "subject": "Viewing request - OH-2210",
+    "received_at": "2026-09-28T09:45:00-04:00",
+    "body": "Hi,\n\nMy husband and I would like to schedule a viewing of the townhouse at 19 Juniper Court (OH-2210). Would Saturday, October 10 in the morning work? We're flexible on the time.\n\nSofia Martinez\n+1 555 014 3345",
+    "expected": {
+      "category": "viewing_request",
+      "urgency": "medium",
+      "name": "Sofia Martinez",
+      "phone": "15550143345",
+      "property": "19 Juniper Court",
+      "requested_date": "2026-10-10"
+    }
+  },
+  {
+    "id": 7,
+    "from_name": "Robert Hayes",
+    "from_email": "robert.hayes@example.com",
+    "subject": "Nobody has called me back",
+    "received_at": "2026-09-28T10:03:00-04:00",
+    "body": "I left two messages last week about selling my house at 9 Willow Bend and nobody from your office has called me back. This is not a great first impression. I'd still like to talk to an agent, but I'm starting to look at other agencies.\n\nRobert Hayes\n555-014-8804",
+    "expected": {
+      "category": "complaint",
+      "urgency": "medium",
+      "name": "Robert Hayes",
+      "phone": "5550148804",
+      "property": "9 Willow Bend",
+      "requested_date": null
+    }
+  },
+  {
+    "id": 8,
+    "from_name": "Crypto Wealth Partners",
+    "from_email": "invest@cryptowealth.example.org",
+    "subject": "Turn $250 into $10,000 this month",
+    "received_at": "2026-09-28T10:10:00-04:00",
+    "body": "Our AI trading bot made members an average of 4000% last quarter. Spots are limited. Deposit just $250 today and start earning passive income tomorrow. Click here to join now.",
+    "expected": {
+      "category": "spam",
+      "urgency": "low",
+      "name": null,
+      "phone": null,
+      "property": null,
+      "requested_date": null
+    }
+  },
+  {
+    "id": 9,
+    "from_name": "Lucía Fernández",
+    "from_email": "lucia.fernandez@example.com",
+    "subject": "Consulta sobre departamento en 150 Linden Street",
+    "received_at": "2026-09-28T10:32:00-04:00",
+    "body": "Hola,\n\nQuisiera saber el precio de arriendo del departamento en 150 Linden Street y si incluye estacionamiento.\n\nMuchas gracias,\nLucía Fernández\nTel: 555-014-9021",
+    "expected": {
+      "category": "inquiry",
+      "urgency": "low",
+      "name": "Lucía Fernández",
+      "phone": "5550149021",
+      "property": "150 Linden Street",
+      "requested_date": null
+    }
+  },
+  {
+    "id": 10,
+    "from_name": "Jorge Ramírez",
+    "from_email": "jramirez@example.com",
+    "subject": "Visita a la casa de Cedar Ridge",
+    "received_at": "2026-09-28T11:05:00-04:00",
+    "body": "Buenos días,\n\nMe gustaría visitar la casa de 33 Cedar Ridge Road la próxima semana. Puedo cualquier día después de las 6 de la tarde. Mi número es 555 014 6612.\n\nSaludos,\nJorge Ramírez",
+    "expected": {
+      "category": "viewing_request",
+      "urgency": "medium",
+      "name": "Jorge Ramírez",
+      "phone": "5550146612",
+      "property": "33 Cedar Ridge Road",
+      "requested_date": null
+    }
+  },
+  {
+    "id": 11,
+    "from_name": "Angela Brooks",
+    "from_email": "angela.brooks@example.com",
+    "subject": "Security deposit - final notice",
+    "received_at": "2026-09-28T11:30:00-04:00",
+    "body": "I moved out of 1840 Pine Street, Apt 2 forty-five days ago and I still have not received my $1,800 security deposit or any itemized deductions. If this is not resolved by Wednesday I will file a claim in small claims court.\n\nAngela Brooks\n555-014-2567",
+    "expected": {
+      "category": "complaint",
+      "urgency": "high",
+      "name": "Angela Brooks",
+      "phone": "5550142567",
+      "property": "1840 Pine Street",
+      "requested_date": null
+    }
+  },
+  {
+    "id": 12,
+    "from_name": "Thomas Wright",
+    "from_email": "twright@example.com",
+    "subject": "Offer below asking on Birchwood?",
+    "received_at": "2026-09-28T12:10:00-04:00",
+    "body": "Hi,\n\nI'm pre-approved and seriously considering 412 Birchwood Lane. Before I make an offer, do you know if the sellers would consider something around 5% below asking? I need to decide by Friday because I'm also looking at another property.\n\nThomas Wright\n555.014.5567",
+    "expected": {
+      "category": "inquiry",
+      "urgency": "medium",
+      "name": "Thomas Wright",
+      "phone": "5550145567",
+      "property": "412 Birchwood Lane",
+      "requested_date": null
+    }
+  },
+  {
+    "id": 13,
+    "from_name": "Mail Administrator",
+    "from_email": "admin@secure-mailbox-verify.example.info",
+    "subject": "Your mailbox storage is full - verify now",
+    "received_at": "2026-09-28T12:25:00-04:00",
+    "body": "Your email account has exceeded its storage limit and will be suspended in 24 hours. To keep receiving messages, verify your account by entering your password at the link below.\n\nMail Administrator",
+    "expected": {
+      "category": "spam",
+      "urgency": "low",
+      "name": null,
+      "phone": null,
+      "property": null,
+      "requested_date": null
+    }
+  },
+  {
+    "id": 14,
+    "from_name": "Hannah Lee",
+    "from_email": "hannah.lee@example.com",
+    "subject": "Showing today after 4pm?",
+    "received_at": "2026-09-28T12:48:00-04:00",
+    "body": "Hi! Is there any chance I could see 60 Aspen Way today after 4 pm? I'm driving past the neighborhood this afternoon. Text me at 555-014-2890.\n\nHannah",
+    "expected": {
+      "category": "viewing_request",
+      "urgency": "high",
+      "name": "Hannah Lee",
+      "phone": "5550142890",
+      "property": "60 Aspen Way",
+      "requested_date": "2026-09-28"
+    }
+  },
+  {
+    "id": 15,
+    "from_name": "Kevin O'Brien",
+    "from_email": "kobrien@example.com",
+    "subject": "Noise from the unit above",
+    "received_at": "2026-09-28T13:15:00-04:00",
+    "body": "Hello,\n\nI rent unit 5A at 27 Maple Court. For the past two weeks the tenants above me have been playing loud music past midnight on weeknights. I've asked them to keep it down but nothing changed. Could the property manager please talk to them?\n\nThanks,\nKevin O'Brien",
+    "expected": {
+      "category": "complaint",
+      "urgency": "medium",
+      "name": "Kevin O'Brien",
+      "phone": null,
+      "property": "27 Maple Court",
+      "requested_date": null
+    }
+  },
+  {
+    "id": 16,
+    "from_name": "Grace Liu",
+    "from_email": "grace.liu@example.com",
+    "subject": "Open houses this month",
+    "received_at": "2026-09-28T13:40:00-04:00",
+    "body": "Hi there,\n\nDo you have a list of the open houses you're hosting this month? I'm just starting to look for a 3-bedroom home in the area and would like to get a feel for prices.\n\nBest,\nGrace Liu",
+    "expected": {
+      "category": "inquiry",
+      "urgency": "low",
+      "name": "Grace Liu",
+      "phone": null,
+      "property": null,
+      "requested_date": null
+    }
+  },
+  {
+    "id": 17,
+    "from_name": "Nathan Price",
+    "from_email": "nathan.price@example.com",
+    "subject": "Tour of OH-1043 on October 3",
+    "received_at": "2026-09-28T14:05:00-04:00",
+    "body": "Hello,\n\nI'd like to book a tour of the apartment at 150 Linden Street (OH-1043) on Saturday, October 3 at 11 am. Please confirm if that time works.\n\nNathan Price\n(555) 014-7123",
+    "expected": {
+      "category": "viewing_request",
+      "urgency": "medium",
+      "name": "Nathan Price",
+      "phone": "5550147123",
+      "property": "150 Linden Street",
+      "requested_date": "2026-10-03"
+    }
+  },
+  {
+    "id": 18,
+    "from_name": "Rewards Center",
+    "from_email": "winner@rewards-center.example.biz",
+    "subject": "Congratulations! You've won a $500 gift card",
+    "received_at": "2026-09-28T14:20:00-04:00",
+    "body": "You have been selected as this week's lucky winner of a $500 gift card! To claim your prize, simply confirm your shipping address and pay a small $4.99 processing fee.",
+    "expected": {
+      "category": "spam",
+      "urgency": "low",
+      "name": null,
+      "phone": null,
+      "property": null,
+      "requested_date": null
+    }
+  },
+  {
+    "id": 19,
+    "from_name": "Maria Gonzalez",
+    "from_email": "maria.gonzalez@example.com",
+    "subject": "No hot water since Friday",
+    "received_at": "2026-09-28T15:02:00-04:00",
+    "body": "Hi, I live at 1840 Pine Street, Apt 4. We have had no hot water since Friday and I have a newborn at home. I already called the office twice. Please send a plumber today.\n\nMaria Gonzalez\n555-014-3378",
+    "expected": {
+      "category": "complaint",
+      "urgency": "high",
+      "name": "Maria Gonzalez",
+      "phone": "5550143378",
+      "property": "1840 Pine Street",
+      "requested_date": null
+    }
+  },
+  {
+    "id": 20,
+    "from_name": "Olivia Turner",
+    "from_email": "olivia.turner@example.com",
+    "subject": "Is Oak Hollow still available?",
+    "received_at": "2026-09-28T15:30:00-04:00",
+    "body": "Hi,\n\nI toured 88 Oak Hollow Drive with one of your agents last week and really liked it. Is it still available, and has the price changed since then?\n\nOlivia Turner",
+    "expected": {
+      "category": "inquiry",
+      "urgency": "low",
+      "name": "Olivia Turner",
+      "phone": null,
+      "property": "88 Oak Hollow Drive",
+      "requested_date": null
+    }
+  }
+]

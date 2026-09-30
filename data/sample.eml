@@ -1,0 +1,26 @@
+From: Laura Chen <laura.chen@example.com>
+To: hello@oakridge-homes.example
+Subject: Garage door stuck at 27 Maple Court
+Date: Tue, 29 Sep 2026 07:45:00 -0400
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="oakridge-sample"
+
+--oakridge-sample
+Content-Type: text/plain; charset="utf-8"
+
+Hi,
+
+I rent unit 1A at 27 Maple Court. The garage door has been stuck halfway open
+since last night, so anyone can walk into the garage and my car is inside.
+Can someone come today? I'm at 555-014-3902.
+
+Laura Chen
+
+--oakridge-sample
+Content-Type: text/html; charset="utf-8"
+
+<p>Hi,</p><p>I rent unit 1A at 27 Maple Court. The garage door has been stuck halfway open
+since last night, so anyone can walk into the garage and my car is inside.<br>
+Can someone come today? I'm at 555-014-3902.</p><p>Laura Chen</p>
+
+--oakridge-sample--

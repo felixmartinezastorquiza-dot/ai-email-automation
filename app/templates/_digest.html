@@ -1,0 +1,23 @@
+<aside id="detail" class="card detail digest">
+  <h2>📝 Daily summary</h2>
+  {% if digest %}
+    <p class="digest-headline">{{ digest.headline }}</p>
+    <div class="digest-counts">
+      <span><strong>{{ counts.total }}</strong> triaged</span>
+      <span class="badge urgency-high">{{ counts.high }} high urgency</span>
+      {% if counts.needs_review %}<span class="badge review">{{ counts.needs_review }} need review</span>{% endif %}
+      {% for category, n in counts.by_category.items() %}
+        <span class="badge category-{{ category }}">{{ n }} {{ (category_labels[category] | lower) if n == 1 else category_plurals[category] }}</span>
+      {% endfor %}
+    </div>
+    {% if digest.priorities %}
+      <h3>Priorities</h3>
+      <ol class="priorities">
+        {% for item in digest.priorities %}<li>{{ item }}</li>{% endfor %}
+      </ol>
+    {% endif %}
+    <p class="muted small">Headline and priorities written by AI; counts computed from the database.</p>
+  {% else %}
+    <p class="alert error">⚠️ {{ error }}</p>
+  {% endif %}
+</aside>

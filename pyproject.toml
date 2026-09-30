@@ -22,6 +22,10 @@ dev = [
     "httpx2",
     "ruff>=0.8",
 ]
+gmail = [
+    "google-api-python-client>=2.150",
+    "google-auth-oauthlib>=1.2",
+]
 
 [build-system]
 requires = ["setuptools>=75"]

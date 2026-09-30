@@ -5,6 +5,7 @@ from collections.abc import Iterator
 import pytest
 
 from app.config import get_settings
+from app.digest import DailyDigest
 from app.emails import Category, EmailAnalysis, Urgency
 from app.main import app, get_chat_model, get_store, reset_rate_limits
 from app.processing import load_sample_emails
@@ -22,6 +23,8 @@ class FakeChatModel:
 
     def parse(self, system, messages, output_format):
         self.calls += 1
+        if output_format is DailyDigest:
+            return DailyDigest(headline="Quiet day.", priorities=["Reply to inquiries"])
         return EmailAnalysis(
             category=Category.INQUIRY,
             urgency=Urgency.LOW,

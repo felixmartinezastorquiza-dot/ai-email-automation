@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pytest
 from fastapi.testclient import TestClient
 
@@ -115,6 +117,49 @@ def test_json_api_triages_without_storing(store: EmailStore) -> None:
     assert response.json()["status"] == "processed"
     assert response.json()["analysis"]["category"] == "inquiry"
     assert store.stats().processed == 0
+
+
+def test_eml_upload_is_triaged(store: EmailStore) -> None:
+    eml = (Path(__file__).resolve().parent.parent / "data" / "sample.eml").read_bytes()
+
+    response = client.post("/emails/eml", files={"file": ("garage.eml", eml, "message/rfc822")})
+
+    assert response.status_code == 200
+    assert "Garage door stuck" in response.text
+    assert store.stats().processed == 1
+
+
+def test_invalid_eml_shows_an_error_in_the_form() -> None:
+    response = client.post("/emails/eml", files={"file": ("x.eml", b"not an email", "text/plain")})
+
+    assert response.headers["HX-Retarget"] == "#compose"
+
+
+def test_csv_export_downloads_triaged_emails() -> None:
+    client.post("/inbox/process-next", data={"filter": "all"})
+
+    response = client.get("/export.csv")
+
+    assert response.headers["content-type"].startswith("text/csv")
+    assert "attachment" in response.headers["content-disposition"]
+    assert len(response.text.strip().splitlines()) == 2  # header + 1 email
+
+
+def test_daily_summary_is_generated_once_and_cached(fake_model) -> None:
+    client.post("/inbox/process-next", data={"filter": "all"})
+    calls_before = fake_model.calls
+
+    first = client.post("/summary")
+    second = client.post("/summary")
+
+    assert "Quiet day." in first.text and "Quiet day." in second.text
+    assert fake_model.calls == calls_before + 1  # second request served from cache
+
+
+def test_daily_summary_needs_processed_emails() -> None:
+    response = client.post("/summary")
+
+    assert "Process the inbox first" in response.text
 
 
 def test_time_saved_formatting() -> None:

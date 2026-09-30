@@ -40,10 +40,9 @@ def test_processing_one_email_asks_htmx_for_the_next(store: EmailStore) -> None:
 
 def test_processing_stops_when_the_inbox_is_empty(store: EmailStore) -> None:
     store.reset(load_sample_emails()[:2])  # a short inbox keeps the test fast
-    for _ in range(2):
-        client.post("/inbox/process-next", data={"filter": "all"})
+    client.post("/inbox/process-next", data={"filter": "all"})
 
-    response = client.post("/inbox/process-next", data={"filter": "all"})
+    response = client.post("/inbox/process-next", data={"filter": "all"})  # the last one
 
     assert "Inbox processed" in response.text
     assert "hx-trigger" not in response.text

@@ -172,10 +172,10 @@ def process_next(
     if message := limit_message(request, process_limiter):
         return render(request, "_inbox.html", inbox_context(store, filter, error=message))
 
+    done = "Inbox processed. Every email is classified and ready for the team."
     email = store.claim_next()
     if email is None:
-        notice = "Inbox processed. Every email is classified and ready for the team."
-        return render(request, "_inbox.html", inbox_context(store, filter, notice=notice))
+        return render(request, "_inbox.html", inbox_context(store, filter, notice=done))
     try:
         processed = process_claimed(store, email, chat_model)
     except LLMUnavailableError as exc:
@@ -183,6 +183,8 @@ def process_next(
 
     context = inbox_context(store, filter, selected=processed, processing=True)
     context["detail_oob"] = True
+    if not context["processing"]:  # that was the last email
+        context["notice"] = done
     return render(request, "_inbox.html", context)
 
 

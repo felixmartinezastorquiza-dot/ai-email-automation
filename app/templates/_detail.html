@@ -1,0 +1,70 @@
+<aside id="detail" class="card detail" {% if oob %}hx-swap-oob="true"{% endif %}>
+  {% if selected %}
+    <h2>How the AI handled this email</h2>
+    <ol class="pipeline">
+      <li>
+        <span class="step">1 · Incoming</span>
+        <strong>{{ selected.subject }}</strong>
+        <span class="muted">From {{ selected.from_name }} &lt;{{ selected.from_email }}&gt;</span>
+        <details>
+          <summary>Show email</summary>
+          <p class="email-body">{{ selected.body }}</p>
+        </details>
+      </li>
+      <li>
+        <span class="step">2 · AI classification</span>
+        {% if selected.status == "needs_review" %}
+          <span class="badge review">Needs human review</span>
+          <span class="muted">The AI's answer failed validation twice, so no data was guessed.</span>
+        {% elif selected.category %}
+          <div class="badges">
+            <span class="badge category-{{ selected.category }}">{{ category_labels[selected.category] }}</span>
+            <span class="badge urgency-{{ selected.urgency }}">{{ selected.urgency | capitalize }} urgency</span>
+          </div>
+          <span class="muted">{{ selected.summary }}</span>
+          {% if selected.attempts > 1 %}
+            <span class="muted">Fixed on retry after validation feedback.</span>
+          {% endif %}
+        {% else %}
+          <span class="muted">Waiting in the inbox.</span>
+        {% endif %}
+      </li>
+      <li>
+        <span class="step">3 · Extracted data</span>
+        {% if selected.status == "needs_review" %}
+          <ul class="problems">
+            {% for problem in selected.problems %}<li>{{ problem }}</li>{% endfor %}
+          </ul>
+        {% else %}
+          <dl class="fields">
+            <dt>Name</dt><dd>{{ selected.contact_name or "—" }}</dd>
+            <dt>Phone</dt><dd>{{ selected.phone or "—" }}</dd>
+            <dt>Property</dt><dd>{{ selected.property or "—" }}</dd>
+            <dt>Requested date</dt><dd>{{ selected.requested_date | day }}</dd>
+          </dl>
+        {% endif %}
+      </li>
+      <li>
+        <span class="step">4 · Destination</span>
+        {% if selected.status == "needs_review" %}
+          <span>📋 Routed to the <strong>human review</strong> queue.</span>
+        {% elif selected.category == "spam" %}
+          <span>🗑️ Moved to <strong>spam</strong>. No follow-up needed.</span>
+        {% elif selected.category %}
+          <span>🗄️ Saved to the <strong>leads database</strong> (row #{{ selected.id }}) and included in the CSV export.</span>
+        {% else %}
+          <span class="muted">Not processed yet.</span>
+        {% endif %}
+      </li>
+    </ol>
+  {% else %}
+    <h2>How it works</h2>
+    <ol class="how">
+      <li>📥 Emails arrive in the agency's inbox.</li>
+      <li>🤖 AI reads each one and returns its <strong>type</strong>, <strong>urgency</strong> and <strong>contact details</strong>.</li>
+      <li>✅ Business rules validate the answer. If it fails twice, a human reviews it instead.</li>
+      <li>🗄️ Results land in a database, sorted so urgent items come first.</li>
+    </ol>
+    <p class="muted">Process the inbox, then click any row to see its journey.</p>
+  {% endif %}
+</aside>

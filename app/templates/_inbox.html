@@ -1,0 +1,92 @@
+<section id="inbox" class="inbox">
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-value">{{ stats.new }}</span>
+      <span class="stat-label">New in inbox</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value">{{ stats.processed + stats.needs_review }}</span>
+      <span class="stat-label">Triaged by AI</span>
+    </div>
+    <div class="stat urgent">
+      <span class="stat-value">{{ stats.high_urgency }}</span>
+      <span class="stat-label">High urgency</span>
+    </div>
+    <div class="stat review">
+      <span class="stat-value">{{ stats.needs_review }}</span>
+      <span class="stat-label">Need human review</span>
+    </div>
+    <div class="stat saved">
+      <span class="stat-value">{{ time_saved }}</span>
+      <span class="stat-label">Manual work saved (≈{{ settings.manual_minutes_per_email }} min/email)</span>
+    </div>
+  </div>
+
+  <div class="process-bar">
+    {% if processing %}
+      <div class="progress">
+        <span class="spinner" aria-hidden="true"></span>
+        Processing… {{ stats.new }} email{{ "" if stats.new == 1 else "s" }} left
+      </div>
+      <div hx-post="/inbox/process-next" hx-trigger="load delay:200ms" hx-target="#inbox"
+           hx-swap="outerHTML" hx-vals='{"filter": "{{ filter }}"}'></div>
+    {% elif stats.new > 0 %}
+      <p>📥 <strong>{{ stats.new }}</strong> new email{{ "" if stats.new == 1 else "s" }} waiting to be sorted.</p>
+      <button class="button primary" hx-post="/inbox/process-next" hx-target="#inbox"
+              hx-swap="outerHTML" hx-vals='{"filter": "{{ filter }}"}'>
+        ✨ Process inbox with AI
+      </button>
+    {% else %}
+      <p>✅ Inbox zero: every email has been triaged.</p>
+    {% endif %}
+  </div>
+
+  {% if notice %}<p class="alert info">{{ notice }}</p>{% endif %}
+  {% if error %}<p class="alert error">⚠️ {{ error }}</p>{% endif %}
+
+  <nav class="filters" aria-label="Filter emails">
+    {% for value, label in filter_labels.items() %}
+      <button class="filter {{ 'active' if value == filter }}" hx-get="/inbox?filter={{ value }}"
+              hx-target="#inbox" hx-swap="outerHTML">{{ label }}</button>
+    {% endfor %}
+  </nav>
+
+  {% if emails %}
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Urgency</th><th>Type</th><th>Contact</th><th>Property</th><th>Requested</th><th>Summary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for email in emails %}
+        <tr class="{{ 'selected' if selected and selected.id == email.id }}"
+            hx-get="/emails/{{ email.id }}" hx-target="#detail" hx-swap="outerHTML" tabindex="0">
+          <td>
+            {% if email.status == "needs_review" %}
+              <span class="badge review">Review</span>
+            {% else %}
+              <span class="badge urgency-{{ email.urgency }}">{{ email.urgency | capitalize }}</span>
+            {% endif %}
+          </td>
+          <td><span class="badge category-{{ email.category or 'none' }}">{{ category_labels.get(email.category, "—") }}</span></td>
+          <td>
+            <div class="contact">{{ email.contact_name or email.from_name }}</div>
+            <div class="muted">{{ email.phone or email.from_email }}</div>
+          </td>
+          <td>{{ email.property or "—" }}</td>
+          <td class="nowrap">{{ email.requested_date | day }}</td>
+          <td class="summary">{{ email.summary or email.subject }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+    <p class="empty">No emails here yet. {% if stats.new %}Click <strong>Process inbox with AI</strong> to start.{% endif %}</p>
+  {% endif %}
+
+  {% if detail_oob %}{% with oob=True %}{% include "_detail.html" %}{% endwith %}{% endif %}
+  {% if compose_oob %}{% with oob=True %}{% include "_compose.html" %}{% endwith %}{% endif %}
+</section>

@@ -21,6 +21,16 @@ class Settings(BaseSettings):
     max_output_tokens: int = 500  # hard cap per LLM call
 
     database_url: SecretStr | None = None
+    test_database_url: SecretStr | None = None  # only used by the test suite
+
+    # Business metric: minutes a person spends reading, sorting and copying one email
+    manual_minutes_per_email: int = 3
+
+    # Abuse protection for the public demo
+    rate_limit_process_per_minute: int = 45  # per visitor IP (a full inbox run is 20)
+    rate_limit_form_per_hour: int = 10  # per visitor IP
+    max_daily_llm_runs: int = 600  # global ceiling on API spend
+    trusted_proxy_hops: int = 0  # 0 locally; 3 on Render (Cloudflare + load balancer)
 
     # Author signature shown in the page footer
     author_name: str = "Felix Martinez"

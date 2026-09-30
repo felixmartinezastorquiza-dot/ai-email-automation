@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="page">
+  <header class="page-header">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">🏡</div>
+      <div>
+        <h1>Oakridge Homes · AI Inbox Assistant</h1>
+        <p>Every incoming email is classified, prioritized and turned into a ready-to-call lead.</p>
+      </div>
+    </div>
+    <button class="button ghost" hx-post="/reset" hx-target="#inbox" hx-swap="outerHTML"
+            hx-confirm="Restore the 20 sample emails and remove everything submitted?">
+      Reset demo
+    </button>
+  </header>
+
+  <div class="layout">
+    {% include "_inbox.html" %}
+    <div class="sidebar">
+      {% include "_detail.html" %}
+      {% include "_compose.html" %}
+    </div>
+  </div>
+</main>
+{% endblock %}

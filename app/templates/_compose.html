@@ -1,0 +1,22 @@
+<form id="compose" class="card compose" hx-post="/emails" hx-target="#inbox" hx-swap="outerHTML"
+      {% if oob %}hx-swap-oob="true"{% endif %}>
+  <h2>Send a test email</h2>
+  <p class="muted">Write like a client would, in English or Spanish. It is triaged instantly.</p>
+  {% if form_error %}<p class="alert error">⚠️ {{ form_error }}</p>{% endif %}
+  <label>Your name
+    <input name="from_name" maxlength="120" required value="{{ form.from_name or '' }}" placeholder="Alex Morgan">
+  </label>
+  <label>Your email
+    <input name="from_email" type="email" maxlength="200" required value="{{ form.from_email or '' }}" placeholder="alex@example.com">
+  </label>
+  <label>Subject
+    <input name="subject" maxlength="300" required value="{{ form.subject or '' }}" placeholder="Viewing this Friday?">
+  </label>
+  <label>Message
+    <textarea name="body" rows="5" maxlength="5000" required placeholder="Hi, could I see 60 Aspen Way this Friday at 3 pm? My number is 555-014-0000.">{{ form.body or '' }}</textarea>
+  </label>
+  <button class="button primary" type="submit">
+    <span class="idle-label">Triage with AI</span>
+    <span class="busy-label">Analyzing…</span>
+  </button>
+</form>

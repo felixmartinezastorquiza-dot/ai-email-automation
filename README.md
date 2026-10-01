@@ -4,7 +4,9 @@
 
 [![CI](https://github.com/felixmartinezastorquiza-dot/ai-email-automation/actions/workflows/ci.yml/badge.svg)](https://github.com/felixmartinezastorquiza-dot/ai-email-automation/actions/workflows/ci.yml)
 
-**Live demo:** _coming soon_ · Evaluation: **20/20 emails classified correctly**
+**Live demo:** [ai-email-automation-abok.onrender.com](https://ai-email-automation-abok.onrender.com) · [API docs](https://ai-email-automation-abok.onrender.com/docs) · Evaluation: **20/20 emails classified correctly**
+
+> Hosted on a free tier: the first visit after a period of inactivity can take up to a minute while the server wakes up.
 
 ![Dashboard with triaged emails sorted by urgency, and one email's journey from inbox to database](docs/screenshot.png)
 

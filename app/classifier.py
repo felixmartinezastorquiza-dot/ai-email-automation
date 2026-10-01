@@ -29,7 +29,8 @@ Urgency rules (apply them strictly):
 - high: property damage or a safety risk, loss of an essential service (water, heating, \
 electricity), legal threats, or a viewing requested for today or within 48 hours of receipt.
 - medium: viewing requests further out or without a specific date, complaints without a \
-safety risk, and inquiries that mention a decision deadline.
+safety risk (including slow service or a client saying they may switch agencies), and \
+inquiries that mention a decision deadline.
 - low: general inquiries without a deadline. Spam is always low.
 
 Extraction rules:

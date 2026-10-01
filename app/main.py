@@ -303,11 +303,11 @@ def export_csv(store: StoreDep, filter: EmailFilter = EmailFilter.ALL) -> Respon
 
 @app.post("/summary", response_class=HTMLResponse, include_in_schema=False)
 def daily_summary(request: Request, store: StoreDep, chat_model: ModelDep):
-    """AI-written end-of-day summary of today's triaged emails."""
-    emails = store.processed_today()
+    """AI-written end-of-day summary of the triaged inbox."""
+    emails = store.triaged()
     context: dict[str, Any] = {"digest": None, "counts": count(emails), "error": None}
     if not emails:
-        context["error"] = "Nothing triaged today yet. Process the inbox first."
+        context["error"] = "Nothing triaged yet. Process the inbox first."
         return render(request, "_digest.html", context)
 
     key = tuple((e.id, e.processed_at) for e in emails)

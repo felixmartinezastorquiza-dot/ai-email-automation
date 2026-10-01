@@ -81,3 +81,6 @@ Estas demos son **proyectos de portafolio**. Su objetivo es que un cliente de Up
 - **Frontend:** HTMX + Jinja2 (panel server-rendered; en la Demo 1 se usó JS simple sobre una API JSON).
 - **Reutilizado de la Demo 1:** config con pydantic-settings, rate limiting por IP + cuota diaria, deploy con Blueprint en Render, CI.
 - **Dev local:** el proyecto está en OneDrive; correr uvicorn sin `--reload`.
+- **Resumen diario:** conteos calculados en código; el LLM solo escribe titular y prioridades. Resume la bandeja actual (en la demo = "el día").
+- **Urgencia "cliente amenaza con irse":** definida como media en el prompt tras variar entre corridas; eval 20/20 estable en 2 corridas (2026-10-01).
+- **Tests de BD:** base separada `email_automation_test` (local, Neon) y Postgres de servicio en GitHub Actions.

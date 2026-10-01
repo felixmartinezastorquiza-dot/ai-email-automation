@@ -1,0 +1,25 @@
+# Render Blueprint: deploy with "New > Blueprint" and point it at this repository.
+# Secrets marked `sync: false` are entered in the Render dashboard, never committed.
+services:
+  - type: web
+    name: ai-email-automation
+    runtime: docker
+    plan: free
+    region: ohio
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: LLM_PROVIDER
+        value: anthropic
+      - key: CHAT_MODEL
+        value: claude-haiku-4-5
+      # Requests reach the app through Cloudflare and Render's load balancer, so
+      # X-Forwarded-For ends with "<client>, <cloudflare>, <render internal>".
+      - key: TRUSTED_PROXY_HOPS
+        value: "3"
+      - key: AUTHOR_NAME
+        value: Felix Martinez

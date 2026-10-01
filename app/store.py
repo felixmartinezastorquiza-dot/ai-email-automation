@@ -238,13 +238,16 @@ class EmailStore:
             ).fetchall()
         return [_row_to_email(row) for row in rows]
 
-    def processed_today(self) -> list[StoredEmail]:
-        """Emails triaged today (UTC, the database's clock), most urgent first."""
-        start_of_day = "date_trunc('day', now() AT TIME ZONE 'UTC') AT TIME ZONE 'UTC'"
+    def triaged(self) -> list[StoredEmail]:
+        """Every triaged email in the inbox, most urgent first.
+
+        In the demo the inbox stands for one working day; in production this would filter
+        by processed_at for the day being summarized.
+        """
         with self._connect() as conn:
             rows = conn.execute(
                 "SELECT * FROM emails WHERE status IN ('processed', 'needs_review') "
-                f"AND processed_at >= {start_of_day} ORDER BY {URGENCY_ORDER}, received_at"
+                f"ORDER BY {URGENCY_ORDER}, received_at"
             ).fetchall()
         return [_row_to_email(row) for row in rows]
 
